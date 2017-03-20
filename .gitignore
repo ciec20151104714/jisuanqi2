@@ -1,0 +1,120 @@
+//
+//  ViewController.swift
+//  s1
+//
+//  Created by s20151104714 on 2017/3/8.
+//  Copyright © 2017年 s20151104714. All rights reserved.
+//
+
+import UIKit
+
+class ViewController: UIViewController {
+    var a1:String = ""
+    var a2:String = ""
+    var a3:String = ""
+    
+    @IBOutlet weak var a: UITextField!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    @IBAction func `as`(_ sender: UIButton) {
+        
+        let q = sender.currentTitle
+        if q=="+"||q=="-"||q=="*"||q=="/"
+        {
+            a3 = q!
+            return
+        }
+        else if q == "="||q == "C"
+        {
+            var e:Double = 0
+            switch a3 {
+            case "+":
+     
+                     e = Double(a1)! + Double(a2)!
+                     a.text = "\(e)"
+                     a1=String(e)
+            case "-":
+                e = Double(a1)! - Double(a2)!
+                  a.text = "\(e)"
+                a1=String(e)
+                
+            case "*":
+                e = Double(a1)! * Double(a2)!
+                  a.text = "\(e)"
+                a1=String(e)
+                
+            case "/":
+                if a2 == "0"
+                {
+                     a.text = "\("错误")"
+                    
+                }
+                else
+                {
+                    e = Double(a1)! / Double(a2)!
+                      a.text = "\(e)"
+                    a1 = String(e)
+                }
+                
+            default:
+                e = 0
+                a1=""
+                  a.text = "\( Int( e))"
+                
+            }
+            a2=""
+            a3=""
+            return
+            
+        }
+        if a3 == ""
+        {
+             a1 = a1 + q!
+           if a1 == "00"
+           {
+            a1 = "0"
+            a.text=a1
+            }
+           else if a1 == "0."
+           {
+             a1 = "0."
+             a.text=a1
+            
+            }
+            else
+           {
+            a.text=a1
+            }
+           
+            
+            }
+        else
+        {
+             a2 = a2 + q!
+            
+            if a2 == "00"
+            {
+                a2 = "0"
+                a.text=a2
+            }
+            else if a2 == "0."
+            {
+                a2 = "0."
+                a.text=a2
+                
+            }
+            else
+            {
+                a.text=a2
+            }
+    }
+    }}
